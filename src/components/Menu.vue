@@ -1,31 +1,12 @@
 <template>
-  <v-card height="400" class="mx-auto">
-    <v-navigation-drawer permanent width="100%" overlay-color="primary">
-      <v-list-item>
+  <v-card>
+    <v-list-item v-for="({ text, to }, index) in links" :key="index">
+      <router-link :to="to" tag="div">
         <v-list-item-content>
-          <v-list-item-title class="title">
-            Определить место
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            subtext
-          </v-list-item-subtitle>
+          <v-btn color="primary">{{ text }}</v-btn>
         </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list dense nav>
-        <v-list-item v-for="item in items" :key="item.title" link>
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+      </router-link>
+    </v-list-item>
   </v-card>
 </template>
 
@@ -33,12 +14,13 @@
 export default {
   data() {
     return {
-      items: [
-        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-        { title: 'Photos', icon: 'mdi-image' },
-        { title: 'About', icon: 'mdi-help-box' }
-      ],
-      right: null
+      links: [
+        { text: 'Определить место', to: '/location' },
+        { text: 'Измерить угол', to: '/angle' },
+        { text: 'Калибровка', to: '/calibration' },
+        { text: 'Настройки', to: '/settings' },
+        { text: 'Завершение работы', to: '/poweroff' }
+      ]
     }
   }
 }
