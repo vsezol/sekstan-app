@@ -16,10 +16,12 @@
           >{{ item }}</v-chip
         >
       </div>
-      <v-btn :disabled="completed" color="primary" width="150">
-        <span v-if="completed">Завершено</span>
-        <span v-else>Продолжить</span>
-      </v-btn>
+      <router-link tag="div" :to="!!link ? link : '#'">
+        <v-btn :disabled="completed" color="primary" width="150">
+          <span v-if="completed">Завершено</span>
+          <span v-else>Продолжить</span>
+        </v-btn>
+      </router-link>
     </div>
   </v-list-item>
 </template>
@@ -30,7 +32,8 @@ export default {
     date: String,
     time: [String, null],
     completed: Boolean,
-    result: [Array, null]
+    result: [Array, null],
+    link: [String, null]
   }
 }
 </script>
