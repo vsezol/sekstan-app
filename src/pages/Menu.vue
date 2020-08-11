@@ -12,10 +12,11 @@
 
 <script>
 export default {
+  name: 'Menu',
   data() {
     return {
       links: [
-        { text: 'Определить место', to: '/location' },
+        { text: 'Определить место', to: '/location/archive' },
         { text: 'Измерить угол', to: '/angle' },
         { text: 'Калибровка', to: '/calibration' },
         { text: 'Настройки', to: '/settings' },
