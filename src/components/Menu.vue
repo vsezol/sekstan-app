@@ -1,9 +1,9 @@
 <template>
   <v-card>
     <v-list-item v-for="({ text, to }, index) in links" :key="index">
-      <router-link :to="to" tag="div">
+      <router-link :to="to" tag="div" class="mx-auto">
         <v-list-item-content>
-          <v-btn color="primary">{{ text }}</v-btn>
+          <v-btn color="primary" width="250">{{ text }}</v-btn>
         </v-list-item-content>
       </router-link>
     </v-list-item>
