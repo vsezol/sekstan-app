@@ -1,67 +1,32 @@
 <template>
   <v-card class="pb-2">
-    <archive-item
-      v-for="(item, index) in completedToDown(archive)"
-      :key="index"
-      v-bind="item"
-    >
-    </archive-item>
-    <router-link
-      class="mx-auto"
-      tag="div"
-      to="/location/new-point"
-      style="width: fit-content"
-    >
-      <v-btn color="primary">Новое измерение</v-btn>
-    </router-link>
+    <div v-if="!loading">
+      <archive-item
+        v-for="(item, index) in completedToDown(archive)"
+        :key="index"
+        v-bind="item"
+      >
+      </archive-item>
+      <router-link
+        class="mx-auto"
+        tag="div"
+        to="/location/new-point"
+        style="width: fit-content"
+      >
+        <v-btn color="primary">Новое измерение</v-btn>
+      </router-link>
+    </div>
   </v-card>
 </template>
 
 <script>
 import ArchiveItem from '@/components/ArchiveItem'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Archive',
-  data() {
-    return {
-      archive: [
-        {
-          date: '08 Feb 20',
-          time: '14:53',
-          completed: false,
-          result: null,
-          link: ''
-        },
-        {
-          date: '08 Feb 20',
-          time: null,
-          completed: true,
-          result: ['60° 30 N', '49° 20 E'],
-          link: null
-        },
-        {
-          date: '07 Feb 20',
-          time: '13:20',
-          completed: false,
-          result: null,
-          link: ''
-        },
-        {
-          date: '04 Feb 20',
-          time: null,
-          completed: true,
-          result: ['60° 30 N', '49° 20 E'],
-          link: null
-        },
-        {
-          date: '05 Feb 20',
-          time: null,
-          completed: true,
-          result: ['60° 30 N', '49° 20 E'],
-          link: null
-        }
-      ]
-    }
+  computed: {
+    ...mapState('archive', ['loading', 'archive', 'error'])
   },
   methods: {
     completedToDown(arr) {
@@ -75,7 +40,14 @@ export default {
         }
       }
       return newArr
-    }
+    },
+    ...mapActions('archive', ['getArchive'])
+  },
+  mounted() {
+    this.getArchive()
+  },
+  updated() {
+    console.log(this.archive)
   },
   components: {
     ArchiveItem
