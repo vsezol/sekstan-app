@@ -9,7 +9,7 @@
     <router-link
       class="mx-auto"
       tag="div"
-      to="/location/archive/new"
+      to="/location/new-point"
       style="width: fit-content"
     >
       <v-btn color="primary">Новое измерение</v-btn>
