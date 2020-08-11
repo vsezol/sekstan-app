@@ -48,7 +48,7 @@ export default {
   }),
   methods: {
     submit() {
-      console.log(this.vars)
+      this.$router.push('/location/check-planets')
     }
   }
 }
