@@ -7,7 +7,7 @@
         dense
         outlined
         class="start-text-field"
-        v-model="starNum"
+        v-model.trim="starNum"
       ></v-text-field>
     </v-col>
     <v-col cols="6">
@@ -32,8 +32,10 @@ export default {
   },
   methods: {
     addHandler() {
-      this.$emit('addStar', this.starNum)
-      this.starNum = ''
+      if (this.starNum) {
+        this.$emit('addStar', this.starNum)
+        this.starNum = ''
+      }
     },
     delHandler() {
       this.$emit('delStar')
