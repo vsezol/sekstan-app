@@ -4,25 +4,53 @@
       <v-container>
         <v-row>
           <v-col cols="6" md="4">
-            <v-text-field label="p" v-model="vars.p" />
+            <v-text-field
+              :value="vars.p"
+              @input="inputHandler('p', $event)"
+              label="p"
+            />
           </v-col>
           <v-col cols="6" md="4">
-            <v-text-field label="c" v-model="vars.c" />
+            <v-text-field
+              :value="vars.c"
+              @input="inputHandler('c', $event)"
+              label="c"
+            />
           </v-col>
           <v-col cols="6" md="4">
-            <v-text-field label="t" v-model="vars.t" />
+            <v-text-field
+              :value="vars.t"
+              @input="inputHandler('t', $event)"
+              label="t"
+            />
           </v-col>
           <v-col cols="6" md="4">
-            <v-text-field label="u" v-model="vars.u" />
+            <v-text-field
+              :value="vars.u"
+              @input="inputHandler('u', $event)"
+              label="u"
+            />
           </v-col>
           <v-col cols="6" md="4">
-            <v-text-field label="s" v-model="vars.s" />
+            <v-text-field
+              :value="vars.s"
+              @input="inputHandler('s', $event)"
+              label="s"
+            />
           </v-col>
           <v-col cols="6" md="4">
-            <v-text-field label="v" v-model="vars.v" />
+            <v-text-field
+              :value="vars.v"
+              @input="inputHandler('v', $event)"
+              label="v"
+            />
           </v-col>
           <v-col cols="6" md="4">
-            <v-text-field label="py" v-model="vars.py" />
+            <v-text-field
+              :value="vars.py"
+              @input="inputHandler('py', $event)"
+              label="py"
+            />
           </v-col>
           <v-col cols="6" md="4" class="d-flex align-center">
             <v-btn width="100%" color="primary" @click="submit">ok</v-btn>
@@ -34,21 +62,20 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
-  data: () => ({
-    vars: {
-      c: '',
-      t: '',
-      p: '',
-      u: '',
-      s: '',
-      v: '',
-      py: ''
-    }
-  }),
+  computed: {
+    ...mapState('newPoint', ['vars'])
+  },
   methods: {
     submit() {
+      console.log(this.vars)
       this.$router.push('/location/check-planets')
+    },
+    ...mapActions('newPoint', ['updateVar']),
+    inputHandler(name, value) {
+      this.updateVar({ name, value })
     }
   }
 }
