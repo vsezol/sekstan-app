@@ -2,7 +2,11 @@
   <div class="wrapper">
     <img :src="iconSrc" width="32" height="32" />
     <p>{{ name }}</p>
-    <v-checkbox @change="$emit('input', $event)" class="checkbox" />
+    <v-checkbox
+      @change="$emit('check', !!$event)"
+      class="checkbox"
+      :input-value="checked"
+    />
   </div>
 </template>
 
@@ -10,7 +14,8 @@
 export default {
   props: {
     iconSrc: String,
-    name: String
+    name: String,
+    checked: Boolean
   }
 }
 </script>

@@ -65,6 +65,7 @@
 import { mapActions, mapState } from 'vuex'
 
 export default {
+  name: 'NewPoin',
   computed: {
     ...mapState('newPoint', ['vars'])
   },

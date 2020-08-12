@@ -3,3 +3,7 @@ export const SUCCESS_GET_ARCHIVE = 'SUCCESS_GET_ARCHIVE'
 export const ERROR_GET_ARCHIVE = 'ERROR_GET_ARCHIVE'
 
 export const UPDATE_VAR = 'UPDATE_VAR'
+
+export const CHECK_PLANET = 'CHECK_PLANET'
+export const ADD_STAR = 'ADD_STAR'
+export const DEL_STAR = 'DEL_STAR'

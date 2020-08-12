@@ -46,9 +46,6 @@ export default {
   mounted() {
     this.getArchive()
   },
-  updated() {
-    console.log(this.archive)
-  },
   components: {
     ArchiveItem
   }
