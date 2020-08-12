@@ -4,7 +4,7 @@
       <v-col cols="3" v-for="({ name, iconSrc }, i) in planets" :key="i">
         <check-planet
           :iconSrc="iconSrc"
-          @change="_ => changePlanet(_, name)"
+          v-model="planets[name].value"
           :name="name"
         ></check-planet>
       </v-col>
@@ -59,9 +59,6 @@ export default {
     CheckPlanet
   },
   methods: {
-    changePlanet(value, name) {
-      this.planets[name].value = value
-    },
     submit() {
       console.log(this.planets)
     }

@@ -2,7 +2,7 @@
   <div class="wrapper">
     <img :src="iconSrc" width="32" height="32" />
     <p>{{ name }}</p>
-    <v-checkbox @change="$emit('change', $event)" class="checkbox" />
+    <v-checkbox @change="$emit('input', $event)" class="checkbox" />
   </div>
 </template>
 
