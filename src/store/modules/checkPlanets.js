@@ -1,5 +1,6 @@
 import actions from '../actions/checkPlanets'
 import mutations from '../mutations/checkPlanets'
+import getters from '../getters/checkPlanets'
 
 export default {
   namespaced: true,
@@ -36,8 +37,9 @@ export default {
         iconSrc: require('@/assets/img/icons/venus.svg')
       }
     ],
-    stars: [11, 33, 55, 1, 566, 3, 55]
+    stars: []
   },
   mutations,
-  actions
+  actions,
+  getters
 }

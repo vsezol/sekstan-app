@@ -41,14 +41,12 @@ export default {
   methods: {
     submit() {
       console.log(this.planets, this.stars)
+      this.$router.push('/location/checked-list')
     },
     checkPlanetHandler(i, checked) {
       this.checkPlanet({ i, checked })
     },
     ...mapActions('checkPlanets', ['checkPlanet', 'addStar', 'delStar'])
-  },
-  mounted() {
-    console.log(this.planets)
   },
   components: {
     CheckPlanet,
