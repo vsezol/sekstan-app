@@ -5,6 +5,7 @@
         cols="3"
         v-for="({ name, iconSrc, checked }, i) in planets"
         :key="i"
+        class="border"
       >
         <check-planet
           :iconSrc="iconSrc"
