@@ -16,7 +16,7 @@
       </v-col>
     </v-row>
     <v-row class="pa-1">
-      <v-chip v-for="(num, i) in stars" :key="i" class="ma-1">{{ num }}</v-chip>
+      <v-chip v-for="(star, i) in stars" :key="i" class="ma-1">{{ star.name }}</v-chip>
     </v-row>
     <add-star @delStar="delStar" @addStar="addStar" />
     <v-btn
@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     submit() {
-      console.log(this.planets, this.stars)
       this.$router.push('/location/checked-list')
     },
     checkPlanetHandler(i, checked) {

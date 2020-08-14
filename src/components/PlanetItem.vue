@@ -1,5 +1,5 @@
 <template>
-  <v-list-item link style="background: #F5F5F5">
+  <v-list-item link style="background: #F5F5F5" :to="link">
     <v-list-item-icon>
       <v-icon v-if="type === 'star' || name === 'sun'" color="yellow"
         >mdi-star</v-icon
@@ -10,7 +10,7 @@
       <v-list-item-title class="font-weight-bold text-h6">
         {{ name }}
       </v-list-item-title>
-      <span v-if="calc">h = {{ calc }}</span>
+      <span v-if="h">h = {{ h }}</span>
       <span v-else>Нет данных</span>
     </v-list-item-content>
   </v-list-item>
@@ -21,7 +21,8 @@ export default {
   props: {
     name: [String, Number],
     type: String,
-    calc: [Number, null]
+    h: [Number, null],
+    link: String
   }
 }
 </script>

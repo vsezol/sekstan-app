@@ -1,12 +1,19 @@
 import { CHECK_PLANET, ADD_STAR, DEL_STAR } from '../mutations/mutationTypes'
 
+const createBeginStar = number => ({
+  name: parseInt(number),
+  results: [],
+  h: null,
+  link: `/location/checked-list/${number}?type=star`
+})
+
 export default {
   checkPlanet(context, payload) {
-    console.log(payload)
     context.commit(CHECK_PLANET, payload)
   },
-  addStar(context, payload) {
-    context.commit(ADD_STAR, parseInt(payload))
+  addStar(context, number) {
+    const newStar = createBeginStar(number)
+    context.commit(ADD_STAR, newStar)
   },
   delStar(context) {
     context.commit(DEL_STAR)

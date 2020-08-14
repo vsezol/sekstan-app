@@ -10,7 +10,7 @@ const store = new Vuex.Store({
   modules: {
     archive,
     newPoint,
-    checkPlanets
+    checkPlanets,
   }
 })
 

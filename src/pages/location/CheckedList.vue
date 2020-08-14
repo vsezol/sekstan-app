@@ -6,17 +6,27 @@
         :key="i + '-planet'"
         type="planet"
         :name="planet.name"
-        :calc="22"
+        :h="planet.h"
+        :link="planet.link"
       />
       <planet-item
         v-for="(star, i) in onlyChecked.stars"
         :key="i + '-star'"
         type="star"
-        :name="star"
-        :calc="null"
+        :name="star.name"
+        :h="star.h"
+        :link="star.link"
       />
     </v-list>
-    <skp-dev-block class="mb-4 mt-4" :skp="111" :deviation="444"/>
+    <information-block
+      class="mb-4 mt-4 px-4 py-2"
+      :values="[
+        { value: skp, text: 'СКП' },
+        { value: deviation, text: 'Deviation' }
+      ]"
+      :color="'success'"
+      :textColor="'white'"
+    />
     <router-link tag="div" :to="'#'">
       <v-btn color="primary" width="100%">
         Расчитать место
@@ -26,13 +36,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import PlanetItem from '@/components/PlanetItem'
-import SkpDevBlock from '@/components/SkpDevBlock'
+import InformationBlock from '@/components/InformationBlock'
 
 export default {
   name: 'CheckedList',
   computed: {
+    ...mapState('checkPlanets', ['skp', 'deviation']),
     ...mapGetters('checkPlanets', ['onlyChecked'])
   },
   mounted() {
@@ -40,7 +51,7 @@ export default {
   },
   components: {
     PlanetItem,
-    SkpDevBlock
+    InformationBlock
   }
 }
 </script>
