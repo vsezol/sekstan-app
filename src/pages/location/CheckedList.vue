@@ -1,6 +1,6 @@
 <template>
-  <v-card class="pa-2 pb-4">
-    <v-list rounded>
+  <v-card class="pa-4">
+    <v-list rounded class="pa-0">
       <planet-item
         v-for="(planet, i) in onlyChecked.planets"
         :key="i + '-planet'"
@@ -16,7 +16,8 @@
         :calc="null"
       />
     </v-list>
-    <router-link tag="div" :to="'#'" class="mt-2">
+    <skp-dev-block class="mb-4 mt-4" :skp="111" :deviation="444"/>
+    <router-link tag="div" :to="'#'">
       <v-btn color="primary" width="100%">
         Расчитать место
       </v-btn>
@@ -27,6 +28,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import PlanetItem from '@/components/PlanetItem'
+import SkpDevBlock from '@/components/SkpDevBlock'
 
 export default {
   name: 'CheckedList',
@@ -37,7 +39,8 @@ export default {
     console.log(this.onlyChecked)
   },
   components: {
-    PlanetItem
+    PlanetItem,
+    SkpDevBlock
   }
 }
 </script>
