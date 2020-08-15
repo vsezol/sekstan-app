@@ -31,7 +31,7 @@
 <script>
 export default {
   props: {
-    name: [String, Number],
+    name: [String],
     type: String,
     avOC: [Number, null],
     avT: [Number, null],

@@ -39,7 +39,7 @@
       />
     </div>
     <div class="pa-4">
-      <router-link tag="div" :to="'#'">
+      <router-link tag="div" :to="'/location/checked-list'">
         <v-btn color="primary" width="100%">
           OK
         </v-btn>

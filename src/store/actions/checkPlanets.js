@@ -10,14 +10,14 @@ import searchByTypeAndName from '../utils/searchByTypeAndName'
 import averageOCAndT from '../utils/averageOCAndT'
 
 const createBeginStar = number => ({
-  name: parseInt(number),
+  name: '' + number,
   results: [],
   avOC: null,
   avT: null,
   link: `/location/checked-list/${number}?type=star`
 })
 
-const randomRes = () => Math.round(Math.random() * 10000) / 100
+const randomRes = () => Math.round(Math.random() * 100) / 100
 
 export default {
   checkPlanet(context, payload) {
@@ -36,9 +36,9 @@ export default {
     commit(RANDOM_OC_AND_T, payload)
     await dispatch('calcAvOCAndT', { type, name })
   },
-  calcAvOCAndT({state, commit}, { type, name }) {
+  calcAvOCAndT({ state, commit }, { type, name }) {
     const element = searchByTypeAndName(state, type, name)
     const avs = averageOCAndT(element.results)
-    commit(CALC_AV_OC_AND_T, {type, name, ...avs})
+    commit(CALC_AV_OC_AND_T, { type, name, ...avs })
   }
 }
