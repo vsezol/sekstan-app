@@ -3,7 +3,8 @@ import {
   ADD_STAR,
   DEL_STAR,
   RANDOM_OC_AND_T,
-  CALC_AV_OC_AND_T
+  CALC_AV_OC_AND_T,
+  REMOVE_RESULT
 } from '../mutations/mutationTypes'
 
 import searchByTypeAndName from '../utils/searchByTypeAndName'
@@ -29,6 +30,11 @@ export default {
   },
   delStar(context) {
     context.commit(DEL_STAR)
+  },
+  async removeResult({ commit, dispatch }, payload) {
+    commit(REMOVE_RESULT, payload)
+    // dev
+    await dispatch('calcAvOCAndT', payload)
   },
   //dev
   async randomOCAndT({ commit, dispatch }, { type, name }) {

@@ -7,6 +7,8 @@ export const UPDATE_VAR = 'UPDATE_VAR'
 export const CHECK_PLANET = 'CHECK_PLANET'
 export const ADD_STAR = 'ADD_STAR'
 export const DEL_STAR = 'DEL_STAR'
+export const REMOVE_RESULT = 'REMOVE_RESULT'
+
 
 //dev
 export const RANDOM_OC_AND_T = 'RANDOM_OC_AND_T'

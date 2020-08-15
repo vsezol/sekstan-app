@@ -10,6 +10,9 @@
       <div class="parametr">
         <span class="font-weight-bold">T:</span> {{ T }}
       </div>
+      <div class="remove-it ml-auto" @click="$emit('remove', number)">
+        <span><v-icon color="error">mdi-delete</v-icon></span>
+      </div>
     </v-list-item-content>
   </v-list-item>
 </template>
@@ -25,7 +28,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.parametr
+.parametr, .remove-it
   flex: none
   margin: 0
+.remove-it
+  cursor: pointer
 </style>

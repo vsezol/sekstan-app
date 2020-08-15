@@ -15,6 +15,7 @@
         :OC="result.OC"
         :T="result.T"
         :number="i + 1"
+        @remove="removeResultHandler"
         :key="i"
       />
     </v-list>
@@ -70,21 +71,16 @@ export default {
     }
   },
   methods: {
-    ...mapActions('checkPlanets', ['randomOCAndT'])
+    ...mapActions('checkPlanets', ['randomOCAndT', 'removeResult']),
+    removeResultHandler(number) {
+      const index = number - 1
+      this.removeResult({ index, type: this.type, name: this.name })
+    }
   },
   mounted() {
-    setTimeout(() => {
-      this.randomOCAndT({ type: this.type, name: this.name })
-    }, 2000)
-    setTimeout(() => {
-      this.randomOCAndT({ type: this.type, name: this.name })
-    }, 4000)
-    setTimeout(() => {
-      this.randomOCAndT({ type: this.type, name: this.name })
-    }, 6000)
-    setTimeout(() => {
-      this.randomOCAndT({ type: this.type, name: this.name })
-    }, 8000)
+    this.randomOCAndT({ type: this.type, name: this.name })
+    this.randomOCAndT({ type: this.type, name: this.name })
+    this.randomOCAndT({ type: this.type, name: this.name })
   },
   components: {
     MeasurementItem,
