@@ -3,7 +3,8 @@ import { CHECK_PLANET, ADD_STAR, DEL_STAR } from '../mutations/mutationTypes'
 const createBeginStar = number => ({
   name: parseInt(number),
   results: [],
-  h: null,
+  avOC: null,
+  avT: null,
   link: `/location/checked-list/${number}?type=star`
 })
 

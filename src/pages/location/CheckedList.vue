@@ -6,7 +6,8 @@
         :key="i + '-planet'"
         type="planet"
         :name="planet.name"
-        :h="planet.h"
+        :avT="planet.avT"
+        :avOC="planet.avOC"
         :link="planet.link"
       />
       <planet-item
@@ -14,7 +15,8 @@
         :key="i + '-star'"
         type="star"
         :name="star.name"
-        :h="star.h"
+        :avT="star.avT"
+        :avOC="star.avOC"
         :link="star.link"
       />
     </v-list>

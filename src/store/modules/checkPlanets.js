@@ -11,7 +11,8 @@ export default {
         checked: false,
         iconSrc: require('@/assets/img/icons/mars.svg'),
         results: [],
-        h: null,
+        avOC: null,
+        avT: null,
         link: '/location/checked-list/mars?type=planet'
       },
       {
@@ -19,18 +20,17 @@ export default {
         checked: false,
         iconSrc: require('@/assets/img/icons/jupiter.svg'),
         results: [],
-        h: null,
+        avOC: null,
+        avT: null,
         link: '/location/checked-list/jupiter?type=planet'
       },
       {
-        // !!!
-        // dev
-        // !!!
         name: 'moon',
-        checked: true,
+        checked: false,
         iconSrc: require('@/assets/img/icons/moon.svg'),
         results: [],
-        h: null,
+        avOC: null,
+        avT: null,
         link: '/location/checked-list/moon?type=planet'
       },
       {
@@ -38,7 +38,8 @@ export default {
         checked: false,
         iconSrc: require('@/assets/img/icons/saturn.svg'),
         results: [],
-        h: null,
+        avOC: null,
+        avT: null,
         link: '/location/checked-list/saturn?type=planet'
       },
       {
@@ -46,7 +47,8 @@ export default {
         checked: false,
         iconSrc: require('@/assets/img/icons/sun.svg'),
         results: [],
-        h: null,
+        avOC: null,
+        avT: null,
         link: '/location/checked-list/sun?type=star'
       },
       {
@@ -54,7 +56,8 @@ export default {
         checked: false,
         iconSrc: require('@/assets/img/icons/venus.svg'),
         results: [],
-        h: null,
+        avOC: null,
+        avT: null,
         link: '/location/checked-list/venus?type=planet'
       }
     ],
