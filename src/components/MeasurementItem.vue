@@ -5,12 +5,10 @@
     </v-list-item-icon>
     <v-list-item-content class="d-flex flex-wrap flex-row">
       <div class="parametr mr-4">
-        <span class="font-weight-bold">OC: </span>
-        <span>{{ oc }}</span>
+        <span class="font-weight-bold">OC:</span> {{ OC }}
       </div>
       <div class="parametr">
-        <span class="font-weight-bold">T: </span>
-        <span>{{ t }}</span>
+        <span class="font-weight-bold">T:</span> {{ T }}
       </div>
     </v-list-item-content>
   </v-list-item>
@@ -18,14 +16,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      oc: 7444,
-      t: 6666666
-    }
-  },
   props: {
-    number: Number
+    number: Number,
+    OC: Number,
+    T: Number
   }
 }
 </script>

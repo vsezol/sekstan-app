@@ -49,7 +49,7 @@ export default {
         results: [],
         avOC: null,
         avT: null,
-        link: '/location/checked-list/sun?type=star'
+        link: '/location/checked-list/sun?type=planet'
       },
       {
         name: 'venus',

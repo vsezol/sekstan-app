@@ -2,21 +2,27 @@
   <v-card>
     <v-card-title>
       <span class="ml-2">
-        <v-icon v-if="type === 'star'" color="yellow">mdi-star</v-icon>
+        <v-icon v-if="type === 'star' || name === 'sun'" color="yellow">
+          mdi-star
+        </v-icon>
         <v-icon v-else color="primary">mdi-moon-full</v-icon>
       </span>
-      <span class="ml-8">{{ this.$route.params.name }}</span>
+      <span class="ml-8">{{ name }}</span>
     </v-card-title>
     <v-list rounded class="py-0">
-      <measurement-item :number="1" />
-      <measurement-item :number="2" />
-      <measurement-item :number="3" />
+      <measurement-item
+        v-for="(result, i) in el.results"
+        :OC="result.OC"
+        :T="result.T"
+        :number="i + 1"
+        :key="i"
+      />
     </v-list>
     <div class="pa-4 pb-2">
       <information-block
         :values="[
-          { value: averageOc, text: 'Среднее OC' },
-          { value: averageT, text: 'Средняя T' }
+          { value: el.avOC, text: 'Среднее OC' },
+          { value: el.avT, text: 'Средняя T' }
         ]"
         :color="'cyan'"
         :textColor="'white'"
@@ -45,15 +51,40 @@
 <script>
 import MeasurementItem from '@/components/MeasurementItem'
 import InformationBlock from '@/components/InformationBlock'
+import { mapState, mapActions } from 'vuex'
+
 export default {
   data() {
     return {
       type: this.$route.query.type,
-      averageOc: null,
-      averageT: null,
-      skp: null,
-      deviation: null
+      name: this.$route.params.name
     }
+  },
+  computed: {
+    ...mapState('checkPlanets', ['skp', 'deviation']),
+    el() {
+      return this.$store.getters['checkPlanets/getByTypeAndName'](
+        this.type,
+        this.name
+      )
+    }
+  },
+  methods: {
+    ...mapActions('checkPlanets', ['randomOCAndT'])
+  },
+  mounted() {
+    setTimeout(() => {
+      this.randomOCAndT({ type: this.type, name: this.name })
+    }, 2000)
+    setTimeout(() => {
+      this.randomOCAndT({ type: this.type, name: this.name })
+    }, 4000)
+    setTimeout(() => {
+      this.randomOCAndT({ type: this.type, name: this.name })
+    }, 6000)
+    setTimeout(() => {
+      this.randomOCAndT({ type: this.type, name: this.name })
+    }, 8000)
   },
   components: {
     MeasurementItem,
