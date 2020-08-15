@@ -7,7 +7,7 @@
         </v-icon>
         <v-icon v-else color="primary">mdi-moon-full</v-icon>
       </span>
-      <span class="ml-8">{{ name }}</span>
+      <span class="ml-2">{{ name }}</span>
     </v-card-title>
     <v-list rounded class="py-0">
       <measurement-item

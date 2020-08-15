@@ -29,7 +29,7 @@
       :color="'success'"
       :textColor="'white'"
     />
-    <router-link tag="div" :to="'#'">
+    <router-link tag="div" :to="'/location'">
       <v-btn color="primary" width="100%">
         Расчитать место
       </v-btn>

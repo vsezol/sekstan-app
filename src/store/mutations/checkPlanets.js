@@ -20,11 +20,12 @@ export default {
     state.stars.pop()
   },
   [RANDOM_OC_AND_T](state, { type, name, OC, T }) {
-    state[type + 's'].find(el => el.name === name).results.push({ OC, T })
+    searchByTypeAndName(state, type, name).results.push({ OC, T })
   },
   [CALC_AV_OC_AND_T](state, { type, name, avOC, avT }) {
-    state[type + 's'].find(el => el.name === name).avOC = avOC
-    state[type + 's'].find(el => el.name === name).avT = avT
+    const element = searchByTypeAndName(state, type, name)
+    element.avOC = avOC
+    element.avT = avT
   },
   [REMOVE_RESULT](state, {type, name, index}) {
     searchByTypeAndName(state, type, name).results.splice(index, 1)
