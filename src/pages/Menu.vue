@@ -17,7 +17,7 @@ export default {
     return {
       links: [
         { text: 'Определить место', to: '/location/archive' },
-        { text: 'Измерить угол', to: '/angle' },
+        { text: 'Измерить угол', to: '/measure-angle' },
         { text: 'Калибровка', to: '/calibration' },
         { text: 'Настройки', to: '/settings' },
         { text: 'Завершение работы', to: '/poweroff' }

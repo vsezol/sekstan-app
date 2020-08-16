@@ -32,7 +32,7 @@
     </v-row>
     <router-link tag="div" :to="'/'" class="pt-4">
       <v-btn color="primary" width="100%">
-        OK
+        Главное меню
       </v-btn>
     </router-link>
   </v-card>

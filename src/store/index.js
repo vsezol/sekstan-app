@@ -4,6 +4,7 @@ import archive from './modules/archive'
 import newPoint from './modules/newPoint'
 import checkPlanets from './modules/checkPlanets'
 import location from './modules/location'
+import measureAngle from './modules/measureAngle'
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
@@ -12,7 +13,8 @@ const store = new Vuex.Store({
     archive,
     newPoint,
     checkPlanets,
-    location
+    location,
+    measureAngle
   }
 })
 
