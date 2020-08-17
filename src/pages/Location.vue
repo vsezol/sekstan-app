@@ -6,7 +6,7 @@
           mdi-map-marker
         </v-icon>
       </span>
-      <span class="ml-2">Location</span>
+      <span class="ml-2">Местоположение</span>
     </v-card-title>
     <v-row>
       <v-col cols="6" class="pr-2 py-0">

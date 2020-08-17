@@ -1,5 +1,13 @@
 <template>
-  <v-card class="pb-2">
+  <v-card class="pb-4 pt-4">
+    <v-card-title class="px-4 py-0">
+      <span class="ml-2">
+        <v-icon color="primary">
+          mdi-folder
+        </v-icon>
+      </span>
+      <span class="ml-2">Архив</span>
+    </v-card-title>
     <div v-if="!loading">
       <archive-item
         v-for="(item, index) in completedToDown(archive)"

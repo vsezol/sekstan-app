@@ -1,5 +1,13 @@
 <template>
   <v-card class="pa-4">
+    <v-card-title class="px-0 py-0">
+      <span class="ml-2">
+        <v-icon color="primary">
+          mdi-brightness-7
+        </v-icon>
+      </span>
+      <span class="ml-2">Выбор светил</span>
+    </v-card-title>
     <v-row class="justify-center">
       <v-col
         cols="3"
@@ -16,7 +24,9 @@
       </v-col>
     </v-row>
     <v-row class="pa-1">
-      <v-chip v-for="(star, i) in stars" :key="i" class="ma-1">{{ star.name }}</v-chip>
+      <v-chip v-for="(star, i) in stars" :key="i" class="ma-1">{{
+        star.name
+      }}</v-chip>
     </v-row>
     <add-star @delStar="delStar" @addStar="addStar" />
     <v-btn

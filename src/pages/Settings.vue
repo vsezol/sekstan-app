@@ -2,7 +2,7 @@
   <v-card class="pa-4">
     <v-card-title class="px-0 pt-0">
       <span class="ml-2">
-        <v-icon color="success">
+        <v-icon color="secondary">
           mdi-cog
         </v-icon>
       </span>

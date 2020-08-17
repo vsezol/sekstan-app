@@ -1,5 +1,13 @@
 <template>
   <v-card class="pa-4">
+    <v-card-title class="px-0 pt-0 pb-4">
+      <span class="ml-2">
+        <v-icon color="primary">
+          mdi-brightness-7
+        </v-icon>
+      </span>
+      <span class="ml-2">Выбранные светила</span>
+    </v-card-title>
     <v-list rounded class="pa-0">
       <planet-item
         v-for="(planet, i) in onlyChecked.planets"

@@ -16,8 +16,10 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="error" @click="dialog = false">Отмена</v-btn>
-          <v-btn color="success" @click="powerOffHandler">ОК</v-btn>
+          <v-btn color="primary" @click="dialog = false">Отмена</v-btn>
+          <v-btn color="error" fab small @click="powerOffHandler">
+            <v-icon>mdi-power</v-icon>
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
