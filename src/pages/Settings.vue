@@ -8,10 +8,24 @@
       </span>
       <span class="ml-2">Settings</span>
     </v-card-title>
-    <v-form class="settings-form mx-auto">
+    <div class="settings-form mx-auto">
       <v-select :items="items" label="Язык" outlined></v-select>
       <v-slider v-model="brightness" prepend-icon="mdi-white-balance-sunny" />
-    </v-form>
+      <div class="pt-4 d-flex">
+        <v-col class="pa-0 pr-2">
+          <v-btn color="success" dark width="100%">
+            Применить
+          </v-btn>
+        </v-col>
+        <v-col class="pa-0">
+          <router-link tag="div" :to="'/'">
+            <v-btn color="primary" width="100%">
+              Главное меню
+            </v-btn>
+          </router-link>
+        </v-col>
+      </div>
+    </div>
   </v-card>
 </template>
 
