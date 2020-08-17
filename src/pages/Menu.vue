@@ -7,10 +7,17 @@
         </v-list-item-content>
       </router-link>
     </v-list-item>
+    <v-list-item>
+      <v-list-item-content>
+        <power-off-modal />
+      </v-list-item-content>
+    </v-list-item>
   </v-card>
 </template>
 
 <script>
+import PowerOffModal from '@/components/PowerOffModal'
+
 export default {
   name: 'Menu',
   data() {
@@ -19,10 +26,12 @@ export default {
         { text: 'Определить место', to: '/location/archive' },
         { text: 'Измерить угол', to: '/measure-angle' },
         { text: 'Калибровка', to: '/calibration' },
-        { text: 'Настройки', to: '/settings' },
-        { text: 'Завершение работы', to: '/poweroff' }
+        { text: 'Настройки', to: '/settings' }
       ]
     }
+  },
+  components: {
+    PowerOffModal
   }
 }
 </script>
