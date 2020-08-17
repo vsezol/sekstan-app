@@ -42,6 +42,7 @@
 import InformationBlock from '@/components/InformationBlock'
 import { mapGetters } from 'vuex'
 export default {
+  name: 'Location',
   computed: {
     ...mapGetters('location', { data: 'getDataToView' })
   },

@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  name: 'CheckPlanets',
   props: {
     iconSrc: String,
     name: String,

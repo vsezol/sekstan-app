@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  name: 'InformationBlock',
   props: ['values', 'color', 'textColor']
 }
 </script>

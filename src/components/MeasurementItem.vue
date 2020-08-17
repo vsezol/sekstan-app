@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  name: 'Measurement',
   props: {
     number: Number,
     OC: Number,

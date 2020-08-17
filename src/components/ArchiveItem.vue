@@ -28,6 +28,7 @@
 
 <script>
 export default {
+  name: 'ArchiveItem',
   props: {
     date: String,
     time: [String, null],

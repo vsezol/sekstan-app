@@ -55,6 +55,7 @@ import InformationBlock from '@/components/InformationBlock'
 import { mapState, mapActions } from 'vuex'
 
 export default {
+  name: 'Measurements',
   data() {
     return {
       type: this.$route.query.type,

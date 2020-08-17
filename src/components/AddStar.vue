@@ -25,6 +25,7 @@
 
 <script>
 export default {
+  name: 'AddStar',
   data() {
     return {
       starNum: ''

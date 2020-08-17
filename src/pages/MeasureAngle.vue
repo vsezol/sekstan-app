@@ -61,6 +61,7 @@ import InformationBlock from '@/components/InformationBlock'
 import MeasurementItem from '@/components/MeasurementItem'
 
 export default {
+  name: 'MeasureAngle',
   computed: {
     ...mapState('measureAngle', ['skp', 'deviation', 'avOC', 'avT', 'results'])
   },

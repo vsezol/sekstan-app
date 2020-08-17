@@ -25,6 +25,7 @@
 
 <script>
 export default {
+  name: 'PowerOffModal',
   data() {
     return {
       dialog: false
