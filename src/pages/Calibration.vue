@@ -96,11 +96,20 @@
         </div>
       </div>
 
-      <router-link tag="div" :to="'/'">
-        <v-btn color="primary" width="100%">
-          Главное меню
-        </v-btn>
-      </router-link>
+      <div class="d-flex">
+        <v-col class="pa-0 pr-2">
+          <v-btn color="success" dark width="100%">
+            Запомнить
+          </v-btn>
+        </v-col>
+        <v-col class="pa-0">
+          <router-link tag="div" :to="'/'">
+            <v-btn color="primary" width="100%">
+              Главное меню
+            </v-btn>
+          </router-link>
+        </v-col>
+      </div>
     </div>
   </v-card>
 </template>
