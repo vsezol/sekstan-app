@@ -1,9 +1,9 @@
 <template>
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="300">
-      <template v-slot:activator="{ on, attrs }">
+      <template v-slot:activator="{ on, attrs }" class="d-flex flex-row">
+        <v-icon class="mr-2">mdi-power</v-icon>
         <v-btn color="error" v-bind="attrs" v-on="on" width="250">
-          <v-icon left>mdi-power</v-icon>
           Завершение работы
         </v-btn>
       </template>

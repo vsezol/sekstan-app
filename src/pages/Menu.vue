@@ -5,12 +5,12 @@
       :key="index"
     >
       <router-link :to="to" tag="div" class="mx-auto">
-        <v-list-item-content>
+        <div>
+          <v-icon class="mr-2">{{ icon }}</v-icon>
           <v-btn :color="color" width="250" dark>
-            <v-icon left>{{ icon }}</v-icon>
-            {{ text }}
+            <span>{{ text }}</span>
           </v-btn>
-        </v-list-item-content>
+        </div>
       </router-link>
     </v-list-item>
     <v-list-item>
