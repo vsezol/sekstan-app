@@ -8,7 +8,7 @@
       </span>
       <span class="ml-2">Измерить угол</span>
     </v-card-title>
-    <v-list rounded class="py-0">
+    <v-list rounded class="py-0 px-0">
       <measurement-item
         v-for="(result, i) in results"
         :OC="result.OC"
@@ -18,7 +18,7 @@
         :key="i"
       />
     </v-list>
-    <div class="pb-2">
+    <div class="pb-2 pt-4">
       <information-block
         :values="[
           { value: avOC, text: 'Среднее OC' },

@@ -45,7 +45,7 @@ export default {
           text: 'Калибровка',
           to: '/calibration',
           color: 'warning',
-          icon: 'mdi-camera-control'
+          icon: 'mdi-gauge'
         },
         {
           text: 'Настройки',
