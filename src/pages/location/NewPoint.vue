@@ -17,6 +17,7 @@
             :value="vars.p"
             @input="inputHandler('p', $event)"
             label="p"
+            type="number"
           />
         </v-col>
         <v-col cols="6" md="4" class="pb-0">
@@ -26,6 +27,7 @@
             :value="vars.c"
             @input="inputHandler('c', $event)"
             label="c"
+            type="number"
           />
         </v-col>
         <v-col cols="6" md="4" class="pb-0">
@@ -35,6 +37,7 @@
             :value="vars.t"
             @input="inputHandler('t', $event)"
             label="t"
+            type="number"
           />
         </v-col>
         <v-col cols="6" md="4" class="pb-0">
@@ -44,6 +47,7 @@
             :value="vars.u"
             @input="inputHandler('u', $event)"
             label="u"
+            type="number"
           />
         </v-col>
         <v-col cols="6" md="4" class="pb-0">
@@ -53,6 +57,7 @@
             :value="vars.s"
             @input="inputHandler('s', $event)"
             label="s"
+            type="number"
           />
         </v-col>
         <v-col cols="6" md="4" class="pb-0">
@@ -62,6 +67,7 @@
             :value="vars.v"
             @input="inputHandler('v', $event)"
             label="v"
+            type="number"
           />
         </v-col>
         <v-col cols="6" md="4" class="pb-0">
@@ -71,6 +77,7 @@
             :value="vars.py"
             @input="inputHandler('py', $event)"
             label="py"
+            type="number"
           />
         </v-col>
         <v-col cols="6" md="4" class="pb-0">
@@ -90,11 +97,12 @@ export default {
     ...mapState('newPoint', ['vars'])
   },
   methods: {
-    submit() {
-      console.log(this.vars)
-      this.$router.push('/location/check-planets')
+    ...mapActions('newPoint', ['updateVar', 'submitVars']),
+    async submit() {
+      if (await this.submitVars()) {
+        this.$router.push('/location/check-planets')
+      }
     },
-    ...mapActions('newPoint', ['updateVar']),
     inputHandler(name, value) {
       this.updateVar({ name, value })
     }

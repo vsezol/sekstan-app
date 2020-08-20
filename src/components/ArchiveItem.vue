@@ -17,7 +17,7 @@
         >
       </div>
       <router-link tag="div" :to="!!link ? link : '#'">
-        <v-btn :disabled="completed" color="primary" width="150">
+        <v-btn :disabled="completed" color="primary" width="125">
           <span v-if="completed">Завершено</span>
           <span v-else>Продолжить</span>
         </v-btn>
@@ -33,7 +33,7 @@ export default {
     date: String,
     time: [String, null],
     completed: Boolean,
-    result: [Array, null],
+    result: [Object, null],
     link: [String, null]
   }
 }

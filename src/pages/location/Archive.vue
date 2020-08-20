@@ -24,6 +24,18 @@
         <v-btn color="primary">Новое измерение</v-btn>
       </router-link>
     </div>
+    <div v-else-if="error">
+      <v-alert type="error">
+        Что-то пошло не так.
+      </v-alert>
+    </div>
+    <div v-else-if="loading">
+      <div class="d-flex px-4" v-for="i in 3" :key="i">
+        <v-skeleton-loader type="chip" class="mr-2" />
+        <v-skeleton-loader type="chip" class="mr-2" />
+        <v-skeleton-loader type="button" />
+      </div>
+    </div>
   </v-card>
 </template>
 
@@ -51,8 +63,8 @@ export default {
     },
     ...mapActions('archive', ['getArchive'])
   },
-  mounted() {
-    this.getArchive()
+  async mounted() {
+    await this.getArchive()
   },
   components: {
     ArchiveItem
