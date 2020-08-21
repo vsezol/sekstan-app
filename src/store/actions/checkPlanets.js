@@ -10,6 +10,8 @@ import {
 import searchByTypeAndName from '../utils/searchByTypeAndName'
 import averageOCAndT from '../utils/averageOCAndT'
 
+import axios from '@/plugins/axios'
+
 const createBeginStar = number => ({
   name: '' + number,
   results: [],
@@ -30,6 +32,17 @@ export default {
   },
   delStar(context) {
     context.commit(DEL_STAR)
+  },
+  async sendAllCheckedToServer(context) {
+    try {
+      const response = await axios.put(
+        '/checked-planets-stars',
+        context.getters.onlyChecked
+      )
+      return response.data
+    } catch (error) {
+      console.log(error)
+    }
   },
   async removeResult({ commit, dispatch }, payload) {
     commit(REMOVE_RESULT, payload)

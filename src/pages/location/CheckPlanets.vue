@@ -50,13 +50,14 @@ export default {
     ...mapState('checkPlanets', ['planets', 'stars'])
   },
   methods: {
-    submit() {
+    async submit() {
+      await this.sendAllCheckedToServer()
       this.$router.push('/location/checked-list')
     },
     checkPlanetHandler(i, checked) {
       this.checkPlanet({ i, checked })
     },
-    ...mapActions('checkPlanets', ['checkPlanet', 'addStar', 'delStar'])
+    ...mapActions('checkPlanets', ['checkPlanet', 'addStar', 'delStar', 'sendAllCheckedToServer'])
   },
   components: {
     CheckPlanet,
