@@ -57,7 +57,31 @@ export default {
     ...mapGetters('checkPlanets', ['onlyChecked'])
   },
   mounted() {
-    console.log(this.onlyChecked)
+    // const socket = new WebSocket('ws://localhost:5000')
+
+    // socket.onopen = () => {
+    //   alert('[open] Соединение установлено')
+    //   alert('Отправляем данные на сервер')
+    //   socket.send('Меня зовут Джон')
+    // }
+
+    // socket.onmessage = event => {
+    //   alert(`[message] Данные получены с сервера: ${event.data}`)
+    // }
+
+    // socket.onclose = event => {
+    //   if (event.wasClean) {
+    //     alert(
+    //       `[close] Соединение закрыто код=${event.code} причина=${event.reason}`
+    //     )
+    //   } else {
+    //     alert('[close] Соединение прервано')
+    //   }
+    // }
+
+    // socket.onerror = error => {
+    //   alert(`[error] ${error.message}`)
+    // }
   },
   components: {
     PlanetItem,
