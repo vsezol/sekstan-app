@@ -40,6 +40,7 @@
       />
     </div>
     <div class="pa-4">
+      <v-btn @click="sendToServer">Send dev</v-btn>
       <router-link tag="div" :to="'/location/checked-list'">
         <v-btn color="primary" width="100%">
           OK
@@ -77,24 +78,25 @@ export default {
     removeResultHandler(number) {
       const index = number - 1
       this.removeResult({ index, type: this.type, name: this.name })
+    },
+    sendToServer() {
+      const socket = this.socket
+      socket.send(
+        JSON.stringify({
+          request: 'SET_CURRENT_PLANET',
+          name: this.name,
+          type: this.type
+        })
+      )
     }
   },
   mounted() {
-    const socket = this.socket
-    socket.send(
-      JSON.stringify({
-        request: 'set-current-planet',
-        name: this.name,
-        type: this.type
-      })
-    )
     // this.randomOCAndT({ type: this.type, name: this.name })
     // this.randomOCAndT({ type: this.type, name: this.name })
     // this.randomOCAndT({ type: this.type, name: this.name })
     // socket.onmessage = event => {
     //   alert(`[message] Данные получены с сервера: ${event.data}`)
     // }
-
     // socket.onclose = event => {
     //   if (event.wasClean) {
     //     alert(
@@ -104,7 +106,6 @@ export default {
     //     alert('[close] Соединение прервано')
     //   }
     // }
-
     // socket.onerror = error => {
     //   alert(`[error] ${error.message}`)
     // }

@@ -26,7 +26,6 @@ const store = new Vuex.Store({
         await new Promise((res, rej) => {
           socket.onopen = () => {
             console.log('Соединение по сокету установлено')
-            socket.send('connect')
             res()
           }
           socket.onerror = () => {
