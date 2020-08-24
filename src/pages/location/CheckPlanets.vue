@@ -34,8 +34,9 @@
       class="d-block mx-auto mt-2"
       color="primary"
       @click="submit"
-      >ok</v-btn
     >
+      ok
+    </v-btn>
   </v-card>
 </template>
 
@@ -57,7 +58,12 @@ export default {
     checkPlanetHandler(i, checked) {
       this.checkPlanet({ i, checked })
     },
-    ...mapActions('checkPlanets', ['checkPlanet', 'addStar', 'delStar', 'sendAllCheckedToServer'])
+    ...mapActions('checkPlanets', [
+      'checkPlanet',
+      'addStar',
+      'delStar',
+      'sendAllCheckedToServer'
+    ])
   },
   components: {
     CheckPlanet,

@@ -6,6 +6,8 @@ import checkPlanets from './modules/checkPlanets'
 import location from './modules/location'
 import measureAngle from './modules/measureAngle'
 
+import { INIT } from './mutations/mutationTypes'
+
 Vue.use(Vuex)
 const store = new Vuex.Store({
   namespaced: true,
@@ -32,16 +34,16 @@ const store = new Vuex.Store({
             rej()
           }
         })
-        console.log('connect')
-        commit('INIT', socket)
+        commit(INIT, { socket })
       } catch (error) {
         alert(error)
       }
     }
   },
   mutations: {
-    INIT(state, payload) {
-      state.socket = payload.socket
+    [INIT](state, { socket }) {
+      console.log(INIT)
+      state.socket = socket
     }
   }
 })

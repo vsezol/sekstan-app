@@ -64,6 +64,7 @@ export default {
   },
   computed: {
     ...mapState('checkPlanets', ['skp', 'deviation']),
+    ...mapState(['socket']),
     el() {
       return this.$store.getters['checkPlanets/getByTypeAndName'](
         this.type,
@@ -79,9 +80,34 @@ export default {
     }
   },
   mounted() {
-    this.randomOCAndT({ type: this.type, name: this.name })
-    this.randomOCAndT({ type: this.type, name: this.name })
-    this.randomOCAndT({ type: this.type, name: this.name })
+    const socket = this.socket
+    socket.send(
+      JSON.stringify({
+        request: 'set-current-planet',
+        name: this.name,
+        type: this.type
+      })
+    )
+    // this.randomOCAndT({ type: this.type, name: this.name })
+    // this.randomOCAndT({ type: this.type, name: this.name })
+    // this.randomOCAndT({ type: this.type, name: this.name })
+    // socket.onmessage = event => {
+    //   alert(`[message] Данные получены с сервера: ${event.data}`)
+    // }
+
+    // socket.onclose = event => {
+    //   if (event.wasClean) {
+    //     alert(
+    //       `[close] Соединение закрыто код=${event.code} причина=${event.reason}`
+    //     )
+    //   } else {
+    //     alert('[close] Соединение прервано')
+    //   }
+    // }
+
+    // socket.onerror = error => {
+    //   alert(`[error] ${error.message}`)
+    // }
   },
   components: {
     MeasurementItem,
