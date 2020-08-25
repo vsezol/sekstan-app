@@ -44,6 +44,22 @@ export default {
       console.log(error)
     }
   },
+  setLamp({ state }, payload) {
+    console.log(state)
+    const socket = state.socket
+    socket.send(
+      JSON.stringify({
+        request: 'SET_CURRENT_LAMP',
+        ...payload
+      })
+    )
+  },
+  // listenServer({ dispatch }) {
+  //   console.log(state)
+  //   // socket.onmessage = evt => {
+  //   //   console.log(JSON.parse(evt.data))
+  //   // }
+  // },
   async removeResult({ commit, dispatch }, payload) {
     commit(REMOVE_RESULT, payload)
     // dev
