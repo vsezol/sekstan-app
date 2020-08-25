@@ -5,7 +5,7 @@
     </v-list-item-icon>
     <v-list-item-content class="d-flex flex-wrap flex-row">
       <div class="parametr mr-4">
-        <span class="font-weight-bold">OC:</span> {{ OC }}
+        <span class="font-weight-bold">OC:</span> {{ OC | formatOC }}
       </div>
       <div class="parametr">
         <span class="font-weight-bold">T:</span> {{ T }}
@@ -23,7 +23,12 @@ export default {
   props: {
     number: Number,
     OC: Number,
-    T: Number
+    T: String
+  },
+  filters: {
+    formatOC(OC) {
+      return parseInt(OC / 60) + '°' + (OC % 60) + "'"
+    }
   }
 }
 </script>

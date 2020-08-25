@@ -14,5 +14,5 @@ export const REMOVE_RESULT = 'REMOVE_RESULT'
 export const DEL_RES_MEASURE_ANGLE = 'DEL_RES_MEASURE_ANGLE'
 
 //dev
-export const RANDOM_OC_AND_T = 'RANDOM_OC_AND_T'
+export const ADD_RESULT = 'ADD_RESULT'
 export const CALC_AV_OC_AND_T = 'CALC_AV_OC_AND_T'

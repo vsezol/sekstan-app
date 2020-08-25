@@ -22,7 +22,7 @@
     <div class="pa-4 pb-2">
       <information-block
         :values="[
-          { value: el.avOC, text: 'Среднее OC' },
+          { value: formatOC(el.avOC), text: 'Среднее OC' },
           { value: el.avT, text: 'Средняя T' }
         ]"
         :color="'cyan'"
@@ -41,9 +41,7 @@
     </div>
     <div class="pa-4">
       <router-link tag="div" :to="'/location/checked-list'">
-        <v-btn color="primary" width="100%">
-          OK
-        </v-btn>
+        <v-btn color="primary" width="100%"> OK </v-btn>
       </router-link>
     </div>
   </v-card>
@@ -73,10 +71,20 @@ export default {
     }
   },
   methods: {
-    ...mapActions('checkPlanets', ['randomOCAndT', 'removeResult']),
+    ...mapActions('checkPlanets', ['addResult', 'removeResult']),
     removeResultHandler(number) {
       const index = number - 1
+      const socket = this.socket
+      socket.send(
+        JSON.stringify({
+          request: 'REMOVE_RESULT',
+          index
+        })
+      )
       this.removeResult({ index, type: this.type, name: this.name })
+    },
+    formatOC(OC) {
+      return parseInt(OC / 60) + '°' + (OC % 60) + "'"
     }
   },
   mounted() {
@@ -89,7 +97,12 @@ export default {
       })
     )
     socket.onmessage = evt => {
-      console.log(JSON.parse(evt.data))
+      const msg = JSON.parse(evt.data)
+      if (msg.request === 'RESULT') {
+        const OC = msg.OC
+        const T = msg.T
+        this.addResult({ name: this.name, type: this.type, OC, T })
+      }
     }
   },
   beforeDestroy() {

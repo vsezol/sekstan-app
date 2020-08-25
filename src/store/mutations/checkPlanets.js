@@ -2,7 +2,7 @@ import {
   ADD_STAR,
   DEL_STAR,
   CHECK_PLANET,
-  RANDOM_OC_AND_T,
+  ADD_RESULT,
   CALC_AV_OC_AND_T,
   REMOVE_RESULT
 } from './mutationTypes'
@@ -19,7 +19,7 @@ export default {
   [DEL_STAR](state) {
     state.stars.pop()
   },
-  [RANDOM_OC_AND_T](state, { type, name, OC, T }) {
+  [ADD_RESULT](state, { type, name, OC, T }) {
     searchByTypeAndName(state, type, name).results.push({ OC, T })
   },
   [CALC_AV_OC_AND_T](state, { type, name, avOC, avT }) {

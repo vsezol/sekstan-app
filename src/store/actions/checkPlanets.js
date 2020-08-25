@@ -2,7 +2,7 @@ import {
   CHECK_PLANET,
   ADD_STAR,
   DEL_STAR,
-  RANDOM_OC_AND_T,
+  ADD_RESULT,
   CALC_AV_OC_AND_T,
   REMOVE_RESULT
 } from '../mutations/mutationTypes'
@@ -19,8 +19,6 @@ const createBeginStar = number => ({
   avT: null,
   link: `/location/checked-list/${number}?type=star`
 })
-
-const randomRes = () => Math.round(Math.random() * 100) / 100
 
 export default {
   checkPlanet(context, payload) {
@@ -65,11 +63,9 @@ export default {
     // dev
     await dispatch('calcAvOCAndT', payload)
   },
-  //dev
-  async randomOCAndT({ commit, dispatch }, { type, name }) {
-    const payload = { type, name, OC: randomRes(), T: randomRes() }
-    commit(RANDOM_OC_AND_T, payload)
-    await dispatch('calcAvOCAndT', { type, name })
+  async addResult({ commit, dispatch }, payload) {
+    commit(ADD_RESULT, payload)
+    await dispatch('calcAvOCAndT', { type: payload.type, name: payload.name })
   },
   calcAvOCAndT({ state, commit }, { type, name }) {
     const element = searchByTypeAndName(state, type, name)
