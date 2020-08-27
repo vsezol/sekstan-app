@@ -4,7 +4,11 @@ import {
   CHECK_PLANET,
   RANDOM_OC_AND_T,
   CALC_AV_OC_AND_T,
-  REMOVE_RESULT
+  REMOVE_RESULT,
+  CHECK_PLANETS_ERROR_INIT,
+  CHECK_PLANETS_SUCCESS_INIT,
+  CHECK_PLANETS_START_INIT,
+  SET_CURRENT_LAMP
 } from './mutationTypes'
 
 import searchByTypeAndName from '../utils/searchByTypeAndName'
@@ -27,7 +31,20 @@ export default {
     element.avOC = avOC
     element.avT = avT
   },
-  [REMOVE_RESULT](state, {type, name, index}) {
+  [REMOVE_RESULT](state, { type, name, index }) {
     searchByTypeAndName(state, type, name).results.splice(index, 1)
-  }
+  },
+  [CHECK_PLANETS_START_INIT](state) {
+    state.initLoading = true
+    state.initError = null
+  },
+  [CHECK_PLANETS_SUCCESS_INIT](state) {
+    state.initLoading = false
+    state.initError = null
+  },
+  [CHECK_PLANETS_ERROR_INIT](state, error) {
+    state.initLoading = false
+    state.initError = error
+  },
+  [SET_CURRENT_LAMP]() {}
 }

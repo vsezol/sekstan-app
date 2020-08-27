@@ -6,7 +6,7 @@ import checkPlanets from './modules/checkPlanets'
 import location from './modules/location'
 import measureAngle from './modules/measureAngle'
 
-import { INIT } from './mutations/mutationTypes'
+// import { INIT } from './mutations/mutationTypes'
 
 Vue.use(Vuex)
 const store = new Vuex.Store({
@@ -19,32 +19,32 @@ const store = new Vuex.Store({
     location,
     measureAngle
   },
-  actions: {
-    async init({ commit }) {
-      const socket = new WebSocket('ws://localhost:5000')
-      try {
-        await new Promise((res, rej) => {
-          socket.onopen = () => {
-            console.log('Соединение по сокету установлено')
-            res()
-          }
-          socket.onerror = () => {
-            console.log(`Ошибка подключения по сокету`)
-            rej()
-          }
-        })
-        commit(INIT, { socket })
-      } catch (error) {
-        alert(error)
-      }
-    }
-  },
-  mutations: {
-    [INIT](state, { socket }) {
-      console.log(INIT)
-      state.socket = socket
-    }
-  }
+  // actions: {
+  //   async init({ commit }) {
+  //     const socket = new WebSocket('ws://localhost:5000')
+  //     try {
+  //       await new Promise((res, rej) => {
+  //         socket.onopen = () => {
+  //           console.log('Соединение по сокету установлено')
+  //           res()
+  //         }
+  //         socket.onerror = () => {
+  //           console.log(`Ошибка подключения по сокету`)
+  //           rej()
+  //         }
+  //       })
+  //       commit(INIT, { socket })
+  //     } catch (error) {
+  //       alert(error)
+  //     }
+  //   }
+  // },
+  // mutations: {
+  //   [INIT](state, { socket }) {
+  //     console.log(INIT)
+  //     state.socket = socket
+  //   }
+  // }
 })
 
 export default store

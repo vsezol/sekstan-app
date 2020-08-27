@@ -1,5 +1,7 @@
 import { UPDATE_VAR } from '../mutations/mutationTypes'
-import axios from '@/plugins/axios'
+
+import newPointResource from '@/resource/newPoint.res.js'
+
 export default {
   updateVar(context, payload) {
     context.commit(UPDATE_VAR, payload)
@@ -7,10 +9,10 @@ export default {
   async submitVars({ state }) {
     const { vars } = state
     try {
-      const response = await axios.put('/begin-vars', vars)
-      return response.data
+      const response = await newPointResource.putVars(vars)
+      return response
     } catch (error) {
-      console.log(error)
+      return error
     }
   }
 }

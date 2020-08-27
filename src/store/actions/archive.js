@@ -4,15 +4,14 @@ import {
   ERROR_GET_ARCHIVE
 } from '../mutations/mutationTypes'
 
-import axios from '@/plugins/axios'
+import archiveResource from '@/resource/archive.res.js'
 
 export default {
   async getArchive({ commit }) {
     commit(START_GET_ARCHIVE)
     try {
-      const response = await axios.get('/archive')
-      const externalArchive = response.data.archive
-      commit(SUCCESS_GET_ARCHIVE, externalArchive)
+      const archive = await archiveResource.getArchive()
+      commit(SUCCESS_GET_ARCHIVE, archive)
     } catch (error) {
       commit(ERROR_GET_ARCHIVE, error)
     }

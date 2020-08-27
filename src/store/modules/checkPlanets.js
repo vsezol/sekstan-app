@@ -63,7 +63,9 @@ export default {
     ],
     stars: [],
     skp: null,
-    deviation: null
+    deviation: null,
+    initLoading: true,
+    initError: null
   },
   mutations,
   actions,

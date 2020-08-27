@@ -9,15 +9,15 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+// import { mapActions } from 'vuex'
 
 export default {
-  name: 'App',
-  methods: {
-    ...mapActions(['init'])
-  },
-  async created() {
-    this.init()
-  }
+  name: 'App'
+  // methods: {
+  //   ...mapActions(['init'])
+  // },
+  // async created() {
+  //   this.init()
+  // }
 }
 </script>
