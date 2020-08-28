@@ -2,17 +2,15 @@ import {
   CHECK_PLANET,
   ADD_STAR,
   DEL_STAR,
-  CHECK_PLANETS_CALC_AV_OC_AND_T,
   CHECK_PLANETS_ADD_RESULT,
-  // REMOVE_RESULT,
+  DELETE_RESULT,
   CHECK_PLANETS_ERROR_INIT,
   CHECK_PLANETS_START_INIT,
   CHECK_PLANETS_SUCCESS_INIT,
-  SET_CURRENT_LAMP
+  SET_CURRENT_LAMP,
+  UNSET_CURRENT_LAMP,
+  UPDATE_AV_OC_AV_T
 } from '../mutations/mutationTypes'
-
-import searchByTypeAndName from '../utils/searchByTypeAndName'
-import averageOCAndT from '../utils/averageOCAndT'
 
 import checkPlanetsResource from '@/resource/checkPlanets.res.js'
 import MeasurementResource from '@/resource/measurement.res.js'
@@ -31,7 +29,11 @@ export default {
   },
   setCurrentLamp(context, { name, type }) {
     measurementResource.setCurrentLamp(name, type)
-    context.commit(SET_CURRENT_LAMP)
+    context.commit(SET_CURRENT_LAMP, { name, type })
+  },
+  unsetCurrentLamp(context) {
+    measurementResource.unsetCurrentLamp()
+    context.commit(UNSET_CURRENT_LAMP)
   },
   async listenServerEvents(context) {
     measurementResource.listen(CHECK_PLANETS_ADD_RESULT, async data => {
@@ -39,10 +41,7 @@ export default {
     })()
   },
   async addResult({ commit }, payload) {
-    // остановился здесь!!!!!!!!!
-    console.log('addResult:', payload)
     commit(CHECK_PLANETS_ADD_RESULT, payload)
-    // await dispatch('calcAvOCAndT', { type: payload.type, name: payload.name })
   },
   checkPlanet(context, payload) {
     context.commit(CHECK_PLANET, payload)
@@ -56,30 +55,20 @@ export default {
   },
   async sendAllCheckedToServer(context) {
     try {
-      const response = await checkPlanetsResource.putAllChecked(
-        context.getters.onlyChecked
-      )
-      return response
+      await checkPlanetsResource.putAllChecked(context.getters.onlyChecked)
     } catch (error) {
       return error
     }
   },
-  calcAvOCAndT({ state, commit }, { type, name }) {
-    const element = searchByTypeAndName(state, type, name)
-    const avs = averageOCAndT(element.results)
-    commit(CHECK_PLANETS_CALC_AV_OC_AND_T, { type, name, ...avs })
+  async deleteResult({ commit }, payload) {
+    try {
+      const response = await measurementResource.deleteResult(payload)
+      commit(DELETE_RESULT, payload)
+      commit(UPDATE_AV_OC_AV_T, response)
+    } catch (error) {
+      return error
+    }
   }
-  // async removeResult({ commit, dispatch }, payload) {
-  //   commit(REMOVE_RESULT, payload)
-  //   // dev
-  //   await dispatch('calcAvOCAndT', payload)
-  // },
-  // //dev
-  // async randomOCAndT({ commit, dispatch }, { type, name }) {
-  //   const payload = { type, name, OC: randomRes(), T: randomRes() }
-  //   commit(RANDOM_OC_AND_T, payload)
-  //   await dispatch('calcAvOCAndT', { type, name })
-  // },
 }
 
 function createBeginStar(number) {

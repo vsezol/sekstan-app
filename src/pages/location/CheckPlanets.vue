@@ -34,6 +34,7 @@
       class="d-block mx-auto mt-2"
       color="primary"
       @click="submit"
+      :disabled="!onlyChecked.planets.length && !onlyChecked.stars.length"
     >
       ok
     </v-btn>
@@ -43,12 +44,13 @@
 <script>
 import CheckPlanet from '@/components/CheckPlanet'
 import AddStar from '@/components/AddStar'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'CheckPlanets',
   computed: {
-    ...mapState('checkPlanets', ['planets', 'stars'])
+    ...mapState('checkPlanets', ['planets', 'stars']),
+    ...mapGetters('checkPlanets', ['onlyChecked'])
   },
   methods: {
     async submit() {

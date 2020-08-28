@@ -2,13 +2,14 @@ import {
   ADD_STAR,
   DEL_STAR,
   CHECK_PLANET,
-  RANDOM_OC_AND_T,
-  CALC_AV_OC_AND_T,
-  REMOVE_RESULT,
+  DELETE_RESULT,
   CHECK_PLANETS_ERROR_INIT,
   CHECK_PLANETS_SUCCESS_INIT,
   CHECK_PLANETS_START_INIT,
-  SET_CURRENT_LAMP
+  SET_CURRENT_LAMP,
+  UNSET_CURRENT_LAMP,
+  CHECK_PLANETS_ADD_RESULT,
+  UPDATE_AV_OC_AV_T
 } from './mutationTypes'
 
 import searchByTypeAndName from '../utils/searchByTypeAndName'
@@ -23,15 +24,7 @@ export default {
   [DEL_STAR](state) {
     state.stars.pop()
   },
-  [RANDOM_OC_AND_T](state, { type, name, OC, T }) {
-    searchByTypeAndName(state, type, name).results.push({ OC, T })
-  },
-  [CALC_AV_OC_AND_T](state, { type, name, avOC, avT }) {
-    const element = searchByTypeAndName(state, type, name)
-    element.avOC = avOC
-    element.avT = avT
-  },
-  [REMOVE_RESULT](state, { type, name, index }) {
+  [DELETE_RESULT](state, { type, name, index }) {
     searchByTypeAndName(state, type, name).results.splice(index, 1)
   },
   [CHECK_PLANETS_START_INIT](state) {
@@ -46,5 +39,29 @@ export default {
     state.initLoading = false
     state.initError = error
   },
-  [SET_CURRENT_LAMP]() {}
+  [SET_CURRENT_LAMP](state, payload) {
+    state.currentLamp = payload
+  },
+  [UNSET_CURRENT_LAMP](state) {
+    state.currentLamp = {
+      name: '',
+      type: ''
+    }
+  },
+  [UPDATE_AV_OC_AV_T](state, { avOC, avT }) {
+    const currentLamp = searchByTypeAndName(
+      state,
+      state.currentLamp.type,
+      state.currentLamp.name
+    )
+    currentLamp.avOC = avOC
+    currentLamp.avT = avT
+  },
+  [CHECK_PLANETS_ADD_RESULT](state, payload) {
+    const { type, name, OC, T, avOC, avT } = payload
+    const currentLamp = searchByTypeAndName(state, type, name)
+    currentLamp.results.push({ OC, T })
+    currentLamp.avOC = avOC
+    currentLamp.avT = avT
+  }
 }

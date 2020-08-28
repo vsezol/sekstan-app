@@ -61,6 +61,10 @@ export default {
         link: '/location/checked-list/venus?type=planet'
       }
     ],
+    currentLamp: {
+      name: '',
+      type: ''
+    },
     stars: [],
     skp: null,
     deviation: null,

@@ -87,31 +87,24 @@ export default {
   methods: {
     ...mapActions('checkPlanets', [
       'randomOCAndT',
-      'removeResult',
+      'deleteResult',
       'init',
       'setCurrentLamp',
+      'unsetCurrentLamp',
       'listenServerEvents'
     ]),
     removeResultHandler(number) {
       const index = number - 1
-      this.removeResult({ index, type: this.type, name: this.name })
+      this.deleteResult({ index, type: this.type, name: this.name })
     }
   },
   async mounted() {
     await this.init()
-    await this.setCurrentLamp({ name: this.name, type: this.type })
     await this.listenServerEvents()
-    // socket.onmessage = evt => {
-    //   console.log(JSON.parse(evt.data))
-    // }
+    this.setCurrentLamp({ name: this.name, type: this.type })
   },
   beforeDestroy() {
-    const socket = this.socket
-    socket.send(
-      JSON.stringify({
-        request: 'CLEAR_CURRENT_LAMP'
-      })
-    )
+    this.unsetCurrentLamp()
   },
   components: {
     MeasurementItem,

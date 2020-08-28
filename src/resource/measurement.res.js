@@ -1,3 +1,5 @@
+import axios from '@/plugins/axios'
+
 class Measurement {
   init = async () => {
     const socket = new WebSocket('ws://localhost:5000')
@@ -21,11 +23,24 @@ class Measurement {
     )
   }
 
-  listen = (type, callback) => {
+  unsetCurrentLamp = () => {
+    this.socket.send(JSON.stringify({ request: 'UNSET_CURRENT_LAMP' }))
+  }
+
+  deleteResult = async ({type, name, index}) => {
+    try {
+      const response = await axios.delete(`/checked-lamps?type=${type}&name=${name}&index=${index}`)
+      return response.data
+    } catch (error) {
+      return error
+    }
+  }
+
+  listen = (requestType, callback) => {
     return () => {
       this.socket.onmessage = event => {
         const data = JSON.parse(event.data)
-        if (data.type === type) {
+        if (data.request === requestType) {
           callback(data)
         }
       }
