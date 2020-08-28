@@ -10,7 +10,7 @@ export const CHECK_PLANET = 'CHECK_PLANET'
 export const ADD_STAR = 'ADD_STAR'
 export const DEL_STAR = 'DEL_STAR'
 export const DELETE_RESULT = 'DELETE_RESULT'
-export const UPDATE_AV_OC_AV_T = 'UPDATE_AV_OC_AV_T'
+export const UPDATE_AV_OC_AV_T_SKP_DEV = 'UPDATE_AV_OC_AV_T_SKP_DEV'
 
 export const DEL_RES_MEASURE_ANGLE = 'DEL_RES_MEASURE_ANGLE'
 

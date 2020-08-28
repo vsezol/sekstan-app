@@ -27,8 +27,8 @@
       <div class="pa-4 pb-2">
         <information-block
           :values="[
-            { value: el.avOC, text: 'Среднее OC' },
-            { value: el.avT, text: 'Средняя T' }
+            { value: formatOC(el.avOC), text: 'Среднее OC' },
+            { value: formatT(el.avT), text: 'Средняя T' }
           ]"
           :color="'cyan'"
           :textColor="'white'"
@@ -37,8 +37,8 @@
       <div class="pa-0 px-4">
         <information-block
           :values="[
-            { value: skp, text: 'СКП' },
-            { value: deviation, text: 'Deviation' }
+            { value: el.skp, text: 'СКП' },
+            { value: formatOC(el.deviation), text: 'Deviation' }
           ]"
           :color="'success'"
           :textColor="'white'"
@@ -96,6 +96,12 @@ export default {
     removeResultHandler(number) {
       const index = number - 1
       this.deleteResult({ index, type: this.type, name: this.name })
+    },
+    formatOC: OC => OC ? parseInt(OC / 60) + '°' + (OC % 60) + "'": null,
+    formatT: T => {
+      const date = new Date(0)
+      date.setSeconds(T)
+      return date.toISOString().substr(11, 8)
     }
   },
   async mounted() {

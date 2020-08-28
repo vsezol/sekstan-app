@@ -9,7 +9,7 @@ import {
   CHECK_PLANETS_SUCCESS_INIT,
   SET_CURRENT_LAMP,
   UNSET_CURRENT_LAMP,
-  UPDATE_AV_OC_AV_T
+  UPDATE_AV_OC_AV_T_SKP_DEV
 } from '../mutations/mutationTypes'
 
 import checkPlanetsResource from '@/resource/checkPlanets.res.js'
@@ -64,7 +64,7 @@ export default {
     try {
       const response = await measurementResource.deleteResult(payload)
       commit(DELETE_RESULT, payload)
-      commit(UPDATE_AV_OC_AV_T, response)
+      commit(UPDATE_AV_OC_AV_T_SKP_DEV, response)
     } catch (error) {
       return error
     }

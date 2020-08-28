@@ -9,7 +9,7 @@ import {
   SET_CURRENT_LAMP,
   UNSET_CURRENT_LAMP,
   CHECK_PLANETS_ADD_RESULT,
-  UPDATE_AV_OC_AV_T
+  UPDATE_AV_OC_AV_T_SKP_DEV
 } from './mutationTypes'
 
 import searchByTypeAndName from '../utils/searchByTypeAndName'
@@ -48,7 +48,7 @@ export default {
       type: ''
     }
   },
-  [UPDATE_AV_OC_AV_T](state, { avOC, avT }) {
+  [UPDATE_AV_OC_AV_T_SKP_DEV](state, { avOC, avT, skp, deviation }) {
     const currentLamp = searchByTypeAndName(
       state,
       state.currentLamp.type,
@@ -56,12 +56,16 @@ export default {
     )
     currentLamp.avOC = avOC
     currentLamp.avT = avT
+    currentLamp.skp = skp
+    currentLamp.deviation = deviation
   },
   [CHECK_PLANETS_ADD_RESULT](state, payload) {
-    const { type, name, OC, T, avOC, avT } = payload
+    const { type, name, OC, T, avOC, avT, skp, deviation } = payload
     const currentLamp = searchByTypeAndName(state, type, name)
     currentLamp.results.push({ OC, T })
     currentLamp.avOC = avOC
     currentLamp.avT = avT
+    currentLamp.skp = skp
+    currentLamp.deviation = deviation
   }
 }
