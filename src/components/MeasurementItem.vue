@@ -26,7 +26,7 @@ export default {
     T: Number
   },
   filters: {
-    formatOC: OC => parseInt(OC / 60) + '°' + (OC % 60) + "'",
+    formatOC: OC => parseInt(OC / 60) + '°' + Math.round((OC % 60) * 100) / 100 + "'",
     formatT: T => {
       const date = new Date(0)
       date.setSeconds(T) 

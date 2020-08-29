@@ -37,7 +37,7 @@
       <div class="pa-0 px-4">
         <information-block
           :values="[
-            { value: el.skp, text: 'СКП' },
+            { value: Math.round(el.skp * 1000) / 1000, text: 'СКП' },
             { value: formatOC(el.deviation), text: 'Deviation' }
           ]"
           :color="'success'"
@@ -97,7 +97,10 @@ export default {
       const index = number - 1
       this.deleteResult({ index, type: this.type, name: this.name })
     },
-    formatOC: OC => OC ? parseInt(OC / 60) + '°' + (OC % 60) + "'": null,
+    formatOC: OC =>
+      OC
+        ? parseInt(OC / 60) + '°' + Math.round((OC % 60) * 100) / 100 + "'"
+        : null,
     formatT: T => {
       const date = new Date(0)
       date.setSeconds(T)

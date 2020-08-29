@@ -15,13 +15,13 @@
           <span class="font-weight-bold">
             av. OC:
           </span>
-          {{ avOC ? avOC : '&times;' }}
+          {{ avOC ? formatOC(avOC) : '&times;' }}
         </span>
         <span>
           <span class="font-weight-bold">
             av. T:
           </span>
-          {{ avT ? avT : '&times;' }}
+          {{ avT ? formatT(avT) : '&times;' }}
         </span>
       </div>
     </v-list-item-content>
@@ -37,6 +37,15 @@ export default {
     avOC: [Number, null],
     avT: [Number, null],
     link: String
+  },
+  methods: {
+    formatOC: OC =>
+      parseInt(OC / 60) + '°' + Math.round((OC % 60) * 100) / 100 + "'",
+    formatT: T => {
+      const date = new Date(0)
+      date.setSeconds(T)
+      return date.toISOString().substr(11, 8)
+    }
   }
 }
 </script>
