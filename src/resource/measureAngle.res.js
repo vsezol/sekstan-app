@@ -1,6 +1,6 @@
 import axios from '@/plugins/axios'
 
-class Measurement {
+class MeasureAngle {
   init = async () => {
     const socket = new WebSocket('ws://localhost:5000')
     try {
@@ -17,20 +17,25 @@ class Measurement {
     }
   }
 
-  setCurrentLamp = (name, type) => {
+  setMeasure = () => {
     this.socket.send(
-      JSON.stringify({ request: 'SET_CURRENT_LAMP', name, type })
+      JSON.stringify({
+        request: 'SET_CURRENT_LAMP',
+        type: 'angle',
+        name: 'measure'
+      })
     )
   }
 
-  unsetCurrentLamp = () => {
+  unsetMeasure = () => {
     this.socket.send(JSON.stringify({ request: 'UNSET_CURRENT_LAMP' }))
-    this.socket.close()
   }
 
-  deleteResult = async ({type, name, index}) => {
+  deleteResult = async index => {
     try {
-      const response = await axios.delete(`/checked-lamps?type=${type}&name=${name}&index=${index}`)
+      const response = await axios.delete(
+        `/checked-lamps?type=angle&name=measure&index=${index}`
+      )
       return response.data
     } catch (error) {
       return error
@@ -49,4 +54,4 @@ class Measurement {
   }
 }
 
-export default Measurement
+export default MeasureAngle

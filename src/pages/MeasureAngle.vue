@@ -66,11 +66,25 @@ export default {
     ...mapState('measureAngle', ['skp', 'deviation', 'avOC', 'avT', 'results'])
   },
   methods: {
-    ...mapActions('measureAngle', ['delResult']),
+    ...mapActions('measureAngle', [
+      'init',
+      'listenServerEvents',
+      'setMeasure',
+      'unsetMeasure',
+      'deleteResult'
+    ]),
     delResultHandler(number) {
       const index = number - 1
-      this.delResult(index)
+      this.deleteResult(index)
     }
+  },
+  async mounted() {
+    await this.init()
+    await this.listenServerEvents()
+    this.setMeasure()
+  },
+  beforeDestroy() {
+    this.unsetMeasure()
   },
   components: {
     InformationBlock,
