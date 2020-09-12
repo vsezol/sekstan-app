@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import PowerOffResource from '@/resource/powerOff.res.js'
+
 export default {
   name: 'PowerOffModal',
   data() {
@@ -35,9 +37,9 @@ export default {
     }
   },
   methods: {
-    powerOffHandler() {
+    async powerOffHandler() {
+      await PowerOffResource.powerOffServer()
       this.dialog = false
-      console.log('send server off')
     }
   }
 }
